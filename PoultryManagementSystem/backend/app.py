@@ -25,7 +25,13 @@ def login():
         cur.execute("SELECT * FROM users WHERE username = %s", (username,))
         user = cur.fetchone()
         if user and check_password_hash(user[2], password):
-            return jsonify({'message': 'Login successful!'}), 200
+            return jsonify({
+                'message': 'Login successful!',
+                'role': user[3],  
+                'username': user[1],  
+                'firstname': user[4], 
+                'lastname': user[6]  
+            }), 200
         else:
             return jsonify({'error': 'Invalid username or password.'}), 401
     except Exception as e:

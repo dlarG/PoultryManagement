@@ -48,109 +48,111 @@ const RegisterForm = () => {
 
   return (
     <div className="auth-container">
-      <h2 className="auth-title">Create Account</h2>
-
-      <form className="auth-form" onSubmit={handleRegister}>
-        <div className="form-group">
-          <label htmlFor="username">Username</label>
-          <input
-            type="text"
-            id="username"
-            name="username"
-            className="form-control"
-            placeholder="Enter username"
-            value={formData.username}
-            onChange={handleChange}
-            required
-          />
+      <div className="auth-card">
+        <div className="auth-header">
+          <h2>Create Your Account</h2>
+          <p>Join our community today</p>
         </div>
 
-        <div className="form-group">
-          <label htmlFor="password">Password</label>
-          <input
-            type="password"
-            id="password"
-            name="password"
-            className="form-control"
-            placeholder="Enter password"
-            value={formData.password}
-            onChange={handleChange}
-            required
-          />
-        </div>
+        <form className="auth-form" onSubmit={handleRegister}>
+          <div className="form-grid">
+            <div className="form-group">
+              <label htmlFor="firstname">First Name</label>
+              <input
+                type="text"
+                id="firstname"
+                name="firstname"
+                placeholder="Enter first name"
+                value={formData.firstname}
+                onChange={handleChange}
+                required
+              />
+            </div>
 
-        <div className="form-group">
-          <label htmlFor="firstname">First Name</label>
-          <input
-            type="text"
-            id="firstname"
-            name="firstname"
-            className="form-control"
-            placeholder="Enter first name"
-            value={formData.firstname}
-            onChange={handleChange}
-            required
-          />
-        </div>
-
-        <div className="form-group">
-          <label htmlFor="lastname">Last Name</label>
-          <input
-            type="text"
-            id="lastname"
-            name="lastname"
-            className="form-control"
-            placeholder="Enter last name"
-            value={formData.lastname}
-            onChange={handleChange}
-            required
-          />
-        </div>
-
-        <button
-          type="submit"
-          className="btn btn-primary"
-          disabled={isLoading || isSuccess}
-        >
-          {isLoading ? (
-            <span className="button-loading">
-              <span className="spinner"></span>
-              Registering...
-            </span>
-          ) : isSuccess ? (
-            <span className="button-success">✓ Success</span>
-          ) : (
-            "Register"
-          )}
-        </button>
-
-        {message.text && (
-          <div
-            className={`message ${
-              message.isError ? "message-error" : "message-success"
-            }`}
-          >
-            {isSuccess ? (
-              <div className="success-message">
-                <span className="success-spinner"></span>
-                {message.text}
-              </div>
-            ) : (
-              message.text
-            )}
+            <div className="form-group">
+              <label htmlFor="lastname">Last Name</label>
+              <input
+                type="text"
+                id="lastname"
+                name="lastname"
+                placeholder="Enter last name"
+                value={formData.lastname}
+                onChange={handleChange}
+                required
+              />
+            </div>
           </div>
-        )}
-      </form>
 
-      <div className="divider">Already have an account?</div>
+          <div className="form-group">
+            <label htmlFor="username">Username</label>
+            <input
+              type="text"
+              id="username"
+              name="username"
+              placeholder="Enter username"
+              value={formData.username}
+              onChange={handleChange}
+              required
+            />
+          </div>
 
-      <button
-        className="btn btn-secondary"
-        onClick={() => navigate("/login")}
-        disabled={isLoading}
-      >
-        Sign In
-      </button>
+          <div className="form-group">
+            <label htmlFor="password">Password</label>
+            <input
+              type="password"
+              id="password"
+              name="password"
+              placeholder="Enter password"
+              value={formData.password}
+              onChange={handleChange}
+              required
+            />
+          </div>
+
+          <button
+            type="submit"
+            className={`auth-button ${isLoading ? "loading" : ""} ${
+              isSuccess ? "success" : ""
+            }`}
+            disabled={isLoading || isSuccess}
+          >
+            {isLoading ? (
+              <>
+                <span className="button-spinner"></span>
+                Creating Account...
+              </>
+            ) : isSuccess ? (
+              <>
+                <span className="button-check">✓</span>
+                Account Created!
+              </>
+            ) : (
+              "Create Account"
+            )}
+          </button>
+
+          {message.text && (
+            <div
+              className={`auth-message ${
+                message.isError ? "error" : "success"
+              }`}
+            >
+              {message.text}
+            </div>
+          )}
+        </form>
+
+        <div className="auth-footer">
+          <p>Already have an account?</p>
+          <button
+            className="auth-link-button"
+            onClick={() => navigate("/login")}
+            disabled={isLoading}
+          >
+            Sign In
+          </button>
+        </div>
+      </div>
     </div>
   );
 };
