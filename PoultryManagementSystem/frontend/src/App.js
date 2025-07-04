@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import LoginForm from "./LoginForm";
 import RegisterForm from "./RegisterForm";
 import HomePage from "./HomePage";
+import GuestDashboard from "./GuestDashboard";
 import AdminDashboard from "./AdminDashboard";
 import { AuthProvider } from "./AuthContext";
 import ProtectedRoutes from "./ProtectedRoutes";
@@ -28,6 +29,17 @@ function App() {
             }
           />
 
+          <Route
+            path="/guest-dashboard"
+            element={
+              <ProtectedRoutes
+                allowedRoles={["guest", "member", "leader", "admin"]}
+              >
+                <GuestDashboard />
+              </ProtectedRoutes>
+            }
+          />
+
           {/* <Route
             path="/leader-dashboard"
             element={
@@ -46,16 +58,7 @@ function App() {
             }
           />
 
-          <Route
-            path="/guest-dashboard"
-            element={
-              <ProtectedRoutes
-                allowedRoles={["guest", "member", "leader", "admin"]}
-              >
-                <GuestDashboard />
-              </ProtectedRoutes>
-            }
-          /> */}
+           */}
         </Routes>
       </Router>
     </AuthProvider>
