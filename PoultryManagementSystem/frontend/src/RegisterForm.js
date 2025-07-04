@@ -49,6 +49,9 @@ const RegisterForm = () => {
   return (
     <div className="auth-container">
       <div className="auth-card">
+        <div className="auth-image">
+          <img src={process.env.PUBLIC_URL + "/logo.png"} alt="Register" />
+        </div>
         <div className="auth-header">
           <h2>Create Your Account</h2>
           <p>Join our community today</p>
@@ -62,7 +65,7 @@ const RegisterForm = () => {
                 type="text"
                 id="firstname"
                 name="firstname"
-                placeholder="Enter first name"
+                placeholder="Enter firstname"
                 value={formData.firstname}
                 onChange={handleChange}
                 required
@@ -75,7 +78,7 @@ const RegisterForm = () => {
                 type="text"
                 id="lastname"
                 name="lastname"
-                placeholder="Enter last name"
+                placeholder="Enter lastname"
                 value={formData.lastname}
                 onChange={handleChange}
                 required

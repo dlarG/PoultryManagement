@@ -77,6 +77,9 @@ const LoginForm = () => {
     <div className="auth-containers">
       <div className="auth-cards">
         <div className="auth-header">
+          <div className="auth-image">
+            <img src={process.env.PUBLIC_URL + "/logo.png"} alt="Login" />
+          </div>
           <h2>Welcome Back</h2>
           <p>Sign in to your account</p>
         </div>
