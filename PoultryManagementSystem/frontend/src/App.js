@@ -5,6 +5,7 @@ import RegisterForm from "./RegisterForm";
 import HomePage from "./HomePage";
 import GuestDashboard from "./GuestDashboard";
 import AdminDashboard from "./AdminDashboard";
+import MemberDashboard from "./MemberDashboard";
 import { AuthProvider } from "./AuthContext";
 import ProtectedRoutes from "./ProtectedRoutes";
 import Unauthorized from "./Unauthorized";
@@ -36,6 +37,15 @@ function App() {
                 allowedRoles={["guest", "member", "leader", "admin"]}
               >
                 <GuestDashboard />
+              </ProtectedRoutes>
+            }
+          />
+
+          <Route
+            path="/member-dashboard"
+            element={
+              <ProtectedRoutes allowedRoles={["member", "leader", "admin"]}>
+                <MemberDashboard />
               </ProtectedRoutes>
             }
           />

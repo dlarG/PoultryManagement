@@ -52,7 +52,7 @@ const GuestDashboard = () => {
   return (
     <div className="guest-container">
       {/* Sidebar */}
-      <div className={`guest-sidebar ${sidebarOpen ? "open" : "closed"}`}>
+      <div className={`sidebar ${sidebarOpen ? "open" : "closed"}`}>
         <div className="sidebar-header">
           <h2>PoultryPro</h2>
         </div>
